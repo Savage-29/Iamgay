@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Math Puzzle Game</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding-top: 50px; background-color: #f4f4f9; }
+        .container { background: white; padding: 30px; border-radius: 10px; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .hidden { display: none; }
+        button { cursor: pointer; padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; }
+        input { padding: 10px; width: 50px; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <div id="puzzle-page" class="container">
+        <h2>Level 1: The Ultimate Math Test</h2>
+        <p>Solve this to proceed:</p>
+        <p><strong>2 + 2 = ?</strong></p>
+        <input type="number" id="answer" placeholder="...">
+        <button onclick="checkAnswer()">Submit</button>
+        <p id="error" style="color: red;"></p>
+    </div>
+
+    <div id="win-page" class="container hidden">
+        <h1 style="color: #4CAF50;">🎉 YOU WON!</h1>
+        <p>You have successfully navigated to the next page.</p>
+        <button onclick="location.reload()">Play Again</button>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const userAnswer = document.getElementById('answer').value;
+            const puzzlePage = document.getElementById('puzzle-page');
+            const winPage = document.getElementById('win-page');
+            const errorMsg = document.getElementById('error');
+
+            if (userAnswer === "4") {
+                // This simulates "moving to the next page"
+                puzzlePage.classList.add('hidden');
+                winPage.classList.remove('hidden');
+            } else {
+                errorMsg.innerText = "Wrong! Try again.";
+            }
+        }
+    </script>
+
+</body>
+</html>
